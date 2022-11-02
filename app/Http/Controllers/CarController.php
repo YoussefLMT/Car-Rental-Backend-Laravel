@@ -53,4 +53,26 @@ class CarController extends Controller
             ]);
         }
     }
+
+
+
+    public function getCar($id)
+    {
+        $car = car::find($id);
+
+        if($car){
+
+            return response()->json([
+                'status' => 200,
+                'car' => $car,
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Car not found!',
+            ]);
+        }
+    }
 }
