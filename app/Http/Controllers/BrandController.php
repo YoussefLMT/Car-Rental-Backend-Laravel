@@ -17,6 +17,7 @@ class BrandController extends Controller
         ]);
     }
 
+
     
     public function AddNewBrand(Request $request)
     {
@@ -42,4 +43,28 @@ class BrandController extends Controller
             ]);
         }
     }
+
+
+
+    public function getBrand($id)
+    {
+        $brand = Brand::find($id);
+
+        if($brand){
+
+            return response()->json([
+                'status' => 200,
+                'brand' => $brand,
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Brand not found!',
+            ]);
+
+        }
+    }
+
 }
