@@ -6,6 +6,19 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
+
+    public function getCars()
+    {
+        $cars = Car::all();
+
+        return response()->json([
+            'status' => 200,
+            'cars' => $cars
+        ]);
+    }
+
+
+
     public function addNewECar(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -25,7 +38,7 @@ class CarController extends Controller
 
         }else{
 
-            Employee::create([
+            Car::create([
                 'name'=> $request->name,
                 'model_year' => $request->model_year,
                 'brand'=> $request->brand,
