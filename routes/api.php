@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::get('get-brand/{id}', [BrandController::class, 'getBrand']);
 Route::put('update-brand/{id}', [BrandController::class, 'updateBrand']);
 Route::delete('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
 
+
+Route::get('cars', [CarController::class, 'getCars']);
+Route::post('add-car', [CarController::class, 'addCar']);
+Route::get('get-car/{id}', [CarController::class, 'getCar']);
+Route::put('update-car/{id}', [CarController::class, 'updateCar']);
+Route::delete('delete-car/{id}', [CarController::class, 'deleteCar']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
