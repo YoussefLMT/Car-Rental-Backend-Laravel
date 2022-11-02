@@ -30,7 +30,7 @@ class CarController extends Controller
             'brand' => 'required',
             'color' => 'required',
             'capacity' => 'required',
-            'plat_number' => 'required',
+            'plate_number' => 'required',
         ]);
 
         if($validator->fails()){
@@ -47,7 +47,7 @@ class CarController extends Controller
                 'brand'=> $request->brand,
                 'color' => $request->color,
                 'capacity' => $request->capacity,
-                'plat_number' => $request->plat_number,
+                'plate_number' => $request->plate_number,
             ]);
     
             return response()->json([
@@ -89,7 +89,7 @@ class CarController extends Controller
             'brand' => 'required',
             'color' => 'required',
             'capacity' => 'required',
-            'plat_number' => 'required',
+            'plate_number' => 'required',
         ]);
 
 
@@ -111,7 +111,7 @@ class CarController extends Controller
                 $car->brand = $request->brand;
                 $car->color = $request->color;
                 $car->capacity = $request->capacity;
-                $car->plat_number = $request->plat_number;
+                $car->plate_number = $request->plate_number;
                 $car->save();
         
                 return response()->json([

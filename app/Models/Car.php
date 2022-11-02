@@ -15,6 +15,6 @@ class Car extends Model
         'brand',
         'color',
         'capacity',
-        'plat_number'
+        'plate_number'
      ];
 }
