@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+
+    public function getBrands()
+    {
+        $brands = Brand::all();
+
+        return response()->json([
+            'status' => 200,
+            'brands' => $brands,
+        ]);
+    }
+
     
     public function AddNewBrand(Request $request)
     {

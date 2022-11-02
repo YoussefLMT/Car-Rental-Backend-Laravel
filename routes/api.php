@@ -20,6 +20,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 
+Route::get('brands', [BrandController::class, 'getBrands']);
 Route::post('add-brand', [BrandController::class, 'addNewBrand']);
 
 
