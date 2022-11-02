@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Brand;
+use Illuminate\Support\Facades\Validator;
+
 
 class BrandController extends Controller
 {
@@ -103,6 +106,30 @@ class BrandController extends Controller
                     'message' => 'Brand not found!',
                 ]);
             }
+        }
+    }
+
+
+
+    public function deleteBrand($id)
+    {
+        $brand = Brand::find($id);
+
+        if($brand){
+
+            $brand->delete();
+    
+            return response()->json([
+                'status' => 200,
+                'message' => 'Deleted successfully',
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Brand not found!',
+            ]);
         }
     }
 }
