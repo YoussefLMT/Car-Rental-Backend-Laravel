@@ -23,6 +23,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('brands', [BrandController::class, 'getBrands']);
 Route::post('add-brand', [BrandController::class, 'addNewBrand']);
 Route::get('get-brand/{id}', [BrandController::class, 'getBrand']);
+Route::put('update-brand/{id}', [BrandController::class, 'updateBrand']);
 
 
 

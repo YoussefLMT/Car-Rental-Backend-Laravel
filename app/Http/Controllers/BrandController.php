@@ -63,8 +63,46 @@ class BrandController extends Controller
                 'status' => 404,
                 'message' => 'Brand not found!',
             ]);
-
         }
     }
 
+
+
+    public function updateBrand(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required',
+        ]);
+
+
+        if($validator->fails()){
+
+            return response()->json([
+                'status' => 422,
+                'validation_err' => $validator->messages(),
+            ]);
+
+        }else{
+
+            $brand = Brand::find($id);
+
+            if($brand){
+
+                $brand->name = $request->name;
+                $brand->save();
+        
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Updated successully',
+                ]);
+
+            }else{
+
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Brand not found!',
+                ]);
+            }
+        }
+    }
 }
