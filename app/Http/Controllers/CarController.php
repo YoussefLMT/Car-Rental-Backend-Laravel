@@ -22,7 +22,7 @@ class CarController extends Controller
 
 
 
-    public function addNewECar(Request $request)
+    public function addNewCar(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name'=> 'required',

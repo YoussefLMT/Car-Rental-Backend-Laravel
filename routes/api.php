@@ -29,7 +29,7 @@ Route::delete('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
 
 
 Route::get('cars', [CarController::class, 'getCars']);
-Route::post('add-car', [CarController::class, 'addCar']);
+Route::post('add-car', [CarController::class, 'addNewCar']);
 Route::get('get-car/{id}', [CarController::class, 'getCar']);
 Route::put('update-car/{id}', [CarController::class, 'updateCar']);
 Route::delete('delete-car/{id}', [CarController::class, 'deleteCar']);
