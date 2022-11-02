@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
+use Illuminate\Support\Facades\Validator;
+
 
 class CarController extends Controller
 {
@@ -123,6 +126,30 @@ class CarController extends Controller
                     'message' => 'Car not found!',
                 ]);
             }
+        }
+    }
+
+
+    
+    public function deleteCar($id)
+    {
+        $car = Car::find($id);
+
+        if($car){
+
+            $car->delete();
+    
+            return response()->json([
+                'status' => 200,
+                'message' => 'Deleted successfully',
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Car not found!',
+            ]);
         }
     }
 }
