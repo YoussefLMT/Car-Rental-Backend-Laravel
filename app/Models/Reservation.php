@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Car extends Model
+class Reservation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'model_year',
-        'brand',
-        'color',
-        'capacity',
-        'plate_number'
+        'first_name',
+        'last_name',
+        'phone',
+        'car_id',
+        'start_date',
+        'end_date',
+        'total_amount'
     ];
 }
