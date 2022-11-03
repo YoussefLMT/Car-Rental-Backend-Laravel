@@ -113,8 +113,8 @@ class ReservationController extends Controller
                 $reservation->last_name = $request->last_name;
                 $reservation->phone = $request->phone;
                 $reservation->car_id = $request->car_id;
-                $reservation->start_day = $request->start_day;
-                $reservation->end_day = $request->end_day;
+                $reservation->start_date = $request->start_date;
+                $reservation->end_date = $request->end_date;
                 $reservation->total_amount = $request->total_amount;
                 $reservation->save();
         
