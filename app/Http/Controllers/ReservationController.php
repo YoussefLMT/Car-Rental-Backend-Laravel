@@ -62,7 +62,7 @@ class ReservationController extends Controller
 
     public function getReservation($id)
     {
-        $reservation = Reservation::join('cars', 'reservations.car_id', '=', 'car.id')
+        $reservation = Reservation::join('cars', 'reservations.car_id', '=', 'cars.id')
         ->where('reservations.id', '=', $id)
                ->get(['reservations.*', 'cars.name']);
 
