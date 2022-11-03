@@ -9,8 +9,8 @@ class ReservationController extends Controller
 
     public function getReservations()
     {
-        $reservations = Reservation::join('cars', 'reservation.car_id', '=', 'cars.id')
-               ->get(['reservation.*', 'cars.name']);
+        $reservations = Reservation::join('cars', 'reservations.car_id', '=', 'cars.id')
+               ->get(['reservations.*', 'cars.name']);
 
         return response()->json([
             'status' => 200,
@@ -56,4 +56,26 @@ class ReservationController extends Controller
         }
     }
 
+
+    public function getReservation($id)
+    {
+        $reservation = Reservation::join('cars', 'reservations.car_id', '=', 'car.id')
+        ->where('reservations.id', '=', $id)
+               ->get(['reservations.*', 'cars.name']);
+
+        if($reservation){
+
+            return response()->json([
+                'status' => 200,
+                'reservation' => $reservation,
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Reservation not found!',
+            ]);
+        }
+    }
 }
