@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Reservation;
+use App\Models\Car;
+use Illuminate\Support\Facades\Validator;
 
 class ReservationController extends Controller
 {
@@ -130,4 +133,26 @@ class ReservationController extends Controller
         }
     }
 
+
+    public function deleteReservation($id)
+    {
+        $reservation = Reservation::find($id);
+
+        if($reservation){
+
+            $reservation->delete();
+    
+            return response()->json([
+                'status' => 200,
+                'message' => 'Deleted successfully',
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Reservation not found!',
+            ]);
+        }
+    }
 }
