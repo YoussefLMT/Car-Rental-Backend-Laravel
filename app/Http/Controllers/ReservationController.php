@@ -6,6 +6,18 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+
+    public function getReservations()
+    {
+        $reservations = Reservation::join('cars', 'reservation.car_id', '=', 'cars.id')
+               ->get(['reservation.*', 'cars.name']);
+
+        return response()->json([
+            'status' => 200,
+            'reservations' => $reservations
+        ]);
+    }
+
     
     public function addReservation(Request $request)
     {
