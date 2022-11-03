@@ -78,4 +78,56 @@ class ReservationController extends Controller
             ]);
         }
     }
+
+
+    public function updateReservation(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'phone' => 'required',
+            'car_id' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'total_amount' => 'required'
+        ]);
+
+
+        if($validator->fails()){
+
+            return response()->json([
+                'status' => 422,
+                'validation_err' => $validator->messages(),
+            ]);
+
+        }else{
+
+            $reservation = Reservation::find($id);
+
+            if($reservation){
+
+                $reservation->first_name = $request->first_name;
+                $reservation->last_name = $request->last_name;
+                $reservation->phone = $request->phone;
+                $reservation->car_id = $request->car_id;
+                $reservation->start_day = $request->start_day;
+                $reservation->end_day = $request->end_day;
+                $reservation->total_amount = $request->total_amount;
+                $reservation->save();
+        
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Updated successully',
+                ]);
+
+            }else{
+
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'Reservation not found!',
+                ]);
+            }
+        }
+    }
+
 }
