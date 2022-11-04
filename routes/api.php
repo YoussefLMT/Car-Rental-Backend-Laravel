@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\StatisticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ Route::post('add-reservation', [ReservationController::class, 'addReservation'])
 Route::get('get-reservation/{id}', [ReservationController::class, 'getReservation']);
 Route::put('update-reservation/{id}', [ReservationController::class, 'updateReservation']);
 Route::delete('delete-reservation/{id}', [ReservationController::class, 'deleteReservation']);
+
+
+Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
+Route::get('reservations-statistics', [StatisticsController::class, 'getReservationsStatistics']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
