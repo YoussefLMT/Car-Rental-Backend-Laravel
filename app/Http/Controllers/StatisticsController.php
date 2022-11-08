@@ -37,7 +37,7 @@ class StatisticsController extends Controller
             $monthlyArray[$i-1] = $emptyMonth;
         }
         
-        $count = Reservation::select(DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'), DB::raw('count(id) as `count`'))
+        $count = Reservation::select(DB::raw('YEAR(start_date) year'), DB::raw('MONTH(start_date) month'), DB::raw('count(id) as `count`'))
         ->groupBy('year','month')
         ->orderByRaw('month')
         ->get()
