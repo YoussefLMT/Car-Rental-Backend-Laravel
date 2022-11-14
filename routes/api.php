@@ -23,37 +23,36 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 
-Route::get('brands', [BrandController::class, 'getBrands']);
-Route::post('add-brand', [BrandController::class, 'addNewBrand']);
-Route::get('get-brand/{id}', [BrandController::class, 'getBrand']);
-Route::put('update-brand/{id}', [BrandController::class, 'updateBrand']);
-Route::delete('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
-
-
-Route::get('cars', [CarController::class, 'getCars']);
-Route::post('add-car', [CarController::class, 'addNewCar']);
-Route::get('get-car/{id}', [CarController::class, 'getCar']);
-Route::put('update-car/{id}', [CarController::class, 'updateCar']);
-Route::delete('delete-car/{id}', [CarController::class, 'deleteCar']);
-
-
-Route::get('reservations', [ReservationController::class, 'getReservations']);
-Route::post('add-reservation', [ReservationController::class, 'addReservation']);
-Route::get('get-reservation/{id}', [ReservationController::class, 'getReservation']);
-Route::put('update-reservation/{id}', [ReservationController::class, 'updateReservation']);
-Route::delete('delete-reservation/{id}', [ReservationController::class, 'deleteReservation']);
-
-
-Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
-Route::get('reservations-statistics', [StatisticsController::class, 'getReservationsStatistics']);
 
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('brands', [BrandController::class, 'getBrands']);
+    Route::post('add-brand', [BrandController::class, 'addNewBrand']);
+    Route::get('get-brand/{id}', [BrandController::class, 'getBrand']);
+    Route::put('update-brand/{id}', [BrandController::class, 'updateBrand']);
+    Route::delete('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
 
+    Route::get('cars', [CarController::class, 'getCars']);
+    Route::post('add-car', [CarController::class, 'addNewCar']);
+    Route::get('get-car/{id}', [CarController::class, 'getCar']);
+    Route::put('update-car/{id}', [CarController::class, 'updateCar']);
+    Route::delete('delete-car/{id}', [CarController::class, 'deleteCar']);
+
+    Route::get('reservations', [ReservationController::class, 'getReservations']);
+    Route::post('add-reservation', [ReservationController::class, 'addReservation']);
+    Route::get('get-reservation/{id}', [ReservationController::class, 'getReservation']);
+    Route::put('update-reservation/{id}', [ReservationController::class, 'updateReservation']);
+    Route::delete('delete-reservation/{id}', [ReservationController::class, 'deleteReservation']);
+
+    Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
+    Route::get('reservations-statistics', [StatisticsController::class, 'getReservationsStatistics']);
+
+    Route::post('logout', [AuthController::class, 'logout']);
 });
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
