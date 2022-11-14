@@ -48,6 +48,13 @@ Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
 Route::get('reservations-statistics', [StatisticsController::class, 'getReservationsStatistics']);
 
 
+
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::post('logout', [AuthController::class, 'logout']);
+
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
