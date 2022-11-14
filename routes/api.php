@@ -24,8 +24,6 @@ Route::post('login', [AuthController::class, 'login']);
 
 
 
-
-
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('brands', [BrandController::class, 'getBrands']);
